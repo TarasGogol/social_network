@@ -6,3 +6,8 @@
     width: 50px;
     border-radius: 50px;
 }
+.dialog{
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+}
