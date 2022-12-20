@@ -1,13 +1,16 @@
-.header{
-    grid-area: h;
-    background-color: #c4c4c4;
-}
-.header img{
-    width: 50px;
-    border-radius: 50px;
-}
 .dialog{
-    display: flex;
-    flex-direction: column;
-    background-color: lightblue;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogItem{
+    padding: 10px;
+}
+.dialogItem .active{
+    color: lightgreen;
+}
+.messages{
+    padding: 10px;
+}
+.messages .message{
+
 }
