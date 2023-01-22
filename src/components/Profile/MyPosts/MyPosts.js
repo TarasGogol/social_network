@@ -3,17 +3,26 @@ import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+    let postElements = props.posts
+        .map(p => <Post message = {p.message} likesCount = {p.likesCount}/>)
+
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        props.addPost(text);
+    }
+
     return (
         <div className={style.content}>
             <div>About</div>
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <textarea ref={newPostElement}></textarea>
+                <button onClick={addPost}>Add post</button>
             </div>
             <div>
-                <Post message = "What's on your mind?" like = "30"/>
-                <Post message = "How are you?" like = "20"/>
+                {postElements}
             </div>
 
         </div>
