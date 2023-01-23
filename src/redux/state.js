@@ -7,6 +7,7 @@ let state = {
             {id:1, message:'Hi, how are you?', likesCount: 12},
             {id:2, message:'It\'s my first post', likesCount: 16},
         ],
+        newPostText: 'sociala-network'
     },
     dialogsPage:{
         messages:[
@@ -27,13 +28,18 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost ={
         id:5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount:0
     };
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText=("");
+    rerenderEntireTree(state);
+}
+export let updatePost = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
 
