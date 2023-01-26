@@ -3,6 +3,7 @@ import style from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, onMessageChangeActionCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
@@ -14,14 +15,13 @@ const Dialogs = (props) => {
         .map(m => <Message message = {m.message}/>)
 
     let addMessage = () =>{
-        props.dispatch({type:"ADD-MESSAGE"})
+        props.dispatch(addMessageActionCreator())
     }
     let onMessageChange = () => {
         let text = newPostElement.current.value;
-        let action = ({type : 'UPDATE-NEW-MESSAGE' , newText : text})
+        let action = (onMessageChangeActionCreator(text))
         props.dispatch(action);
     }
-
 
     return (
         <div className={style.dialog}>
@@ -31,7 +31,7 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div>
-                    <textarea ref={newPostElement} onChange={onMessageChange} value={props.newText}></textarea>
+                    <textarea ref={newPostElement} onChange={onMessageChange} value={props.newText}/>
                 </div>
                 <div>
                     <button onClick={addMessage}>Add post</button>
