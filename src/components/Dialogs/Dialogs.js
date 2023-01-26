@@ -6,11 +6,22 @@ import Message from "./Message/Message";
 
 
 const Dialogs = (props) => {
+    let newPostElement = React.createRef();
     let dialogsElements = props.state.dialogs
         .map(d => <DialogItem name = {d.name} id ={d.id}/>);
 
     let messagesElements = props.state.messages
         .map(m => <Message message = {m.message}/>)
+
+    let addMessage = () =>{
+        props.dispatch({type:"ADD-MESSAGE"})
+    }
+    let onMessageChange = () => {
+        let text = newPostElement.current.value;
+        let action = ({type : 'UPDATE-NEW-MESSAGE' , newText : text})
+        props.dispatch(action);
+    }
+
 
     return (
         <div className={style.dialog}>
@@ -20,10 +31,10 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement} onChange={onMessageChange} value={props.newText}></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addMessage}>Add post</button>
                 </div>
             </div>
         </div>

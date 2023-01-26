@@ -21,7 +21,9 @@ function App(props) {
                         profilePage = {props.state.profilePage}
                         dispatch = {props.dispatch}/>}/>
                     <Route path="/dialogs/*" element={<Dialogs
-                    state = {props.state.dialogsPage} />}/>
+                        state = {props.state.dialogsPage}
+                        dispatch = {props.dispatch}
+                        newText = {props.state.dialogsPage.newMessage}/>}/>
                     <Route path="/stories" element={<Stories/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/settings" element={<Settings/>}/>
