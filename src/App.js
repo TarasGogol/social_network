@@ -8,6 +8,7 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import Stories from "./components/Stories/Stories";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 function App(props) {
   return (
@@ -18,12 +19,9 @@ function App(props) {
               <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/profile" element={<Profile
-                        profilePage = {props.state.profilePage}
-                        dispatch = {props.dispatch}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs
-                        state = {props.state.dialogsPage}
-                        dispatch = {props.dispatch}
-                        newText = {props.state.dialogsPage.newMessage}/>}/>
+                        store = {props.store}/>}/>
+                    <Route path="/dialogs/*" element={<DialogsContainer
+                        store={props.store}/>}/>
                     <Route path="/stories" element={<Stories/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/settings" element={<Settings/>}/>

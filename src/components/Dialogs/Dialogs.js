@@ -7,20 +7,21 @@ import {addMessageActionCreator, onMessageChangeActionCreator} from "../../redux
 
 
 const Dialogs = (props) => {
-    let newPostElement = React.createRef();
-    let dialogsElements = props.state.dialogs
-        .map(d => <DialogItem name = {d.name} id ={d.id}/>);
 
-    let messagesElements = props.state.messages
-        .map(m => <Message message = {m.message}/>)
+    let state = props.dialogsPage;
+
+    let newPostElement = React.createRef();
+
+    let dialogsElements = state.dialogs.map(d => <DialogItem name = {d.name} id ={d.id}/>);
+
+    let messagesElements = state.messages.map(m => <Message message = {m.message}/>)
 
     let addMessage = () =>{
-        props.dispatch(addMessageActionCreator())
+        props.sendMessage();
     }
     let onMessageChange = () => {
-        let text = newPostElement.current.value;
-        let action = (onMessageChangeActionCreator(text))
-        props.dispatch(action);
+        let body = newPostElement.current.value;
+        props.updateNewMessage(body);
     }
 
     return (
@@ -31,7 +32,7 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div>
-                    <textarea ref={newPostElement} onChange={onMessageChange} value={props.newText}/>
+                    <textarea ref={newPostElement} onChange={onMessageChange} value={state.newMessage}/>
                 </div>
                 <div>
                     <button onClick={addMessage}>Add post</button>
