@@ -4,11 +4,11 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Stories from "./components/Stories/Stories";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
   return (
@@ -23,6 +23,7 @@ function App(props) {
                     <Route path="/stories" element={<Stories/>}/>
                     <Route path="/news" element={<News/>}/>
                     <Route path="/settings" element={<Settings/>}/>
+                    <Route path="/users" element={<UsersContainer/>}/>
                 </Routes>
               </div>
               {/*<Profile/>*/}
