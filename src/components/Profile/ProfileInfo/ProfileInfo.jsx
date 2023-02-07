@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
                 <img src="https://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="img forest"/>
             </div>
             <div className={style.ava}>
-                <img src={props.profile.photos.large}/>description</div>
+                <img src={props.profile.photos.large}/>{props.profile.aboutMe}</div>
         </div>
     );
 };
