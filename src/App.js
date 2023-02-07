@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 function App(props) {
@@ -19,7 +20,7 @@ function App(props) {
               <Navbar/>
               <div className="app-wrapper-content">
                 <Routes>
-                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/profile/*" element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                     <Route path="/stories" element={<Stories/>}/>
                     <Route path="/news" element={<News/>}/>
