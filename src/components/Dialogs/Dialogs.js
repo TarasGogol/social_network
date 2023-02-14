@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {addMessageActionCreator, onMessageChangeActionCreator} from "../../redux/dialogs-reducer";
@@ -23,7 +23,7 @@ const Dialogs = (props) => {
         let body = newPostElement.current.value;
         props.updateNewMessage(body);
     }
-
+    if(!props.isAuth) return <Navigate to={"/login"}/>
     return (
         <div className={style.dialog}>
             <div className={style.dialogItem}>
